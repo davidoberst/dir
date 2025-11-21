@@ -46,8 +46,13 @@ for x in listpath:
 
     full_path = os.path.join(userEntry, x) 
     size_bytes = os.path.getsize(full_path)
+    isdir = os.path.isdir(x)
 
-    if size_bytes < 1024:
+    
+    if isdir == True:
+     size_str = (f"Directory")
+
+    elif size_bytes < 1024:
         # less 1 KB → show bytes
         size_str = (f"{size_bytes}B")
 
@@ -65,9 +70,12 @@ for x in listpath:
         # 1 GB or more → show GB
         size_gb = size_bytes / (1024**3)
         size_str = (f"{size_gb:.2f}GB")
+    
+    
+    
+    
  
-    time.sleep(0.2)
-   
+    time.sleep(0.1)
     print(f"{x:90} {size_str:>15}")
 
  

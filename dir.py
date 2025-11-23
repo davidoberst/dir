@@ -41,17 +41,20 @@ time.sleep(1)
 print("")
 print(Fore.YELLOW + f"{'FILE':90} {'SIZE':>15}" + Style.RESET_ALL)
 print(Fore.YELLOW + "-" * 120 + Style.RESET_ALL)
-for x in listpath:
 
-    full_path = os.path.join(userEntry, x) 
-    size_bytes = os.path.getsize(full_path)
-    isdir = os.path.isdir(x)
+def SearchFatherPath():
+ for x in listpath: # [x] iteration on the path
+    #DECLARE VARIABLES
+    full_path = os.path.join(userEntry, x) #get the full path
+    size_bytes = os.path.getsize(full_path) 
+    isdir = os.path.isdir(x) #check if [x] is a file or a dir
+    
+
+
 
     
     if isdir == True:
      size_str = Fore.YELLOW + "Directory" + Style.RESET_ALL
-
-
 
     elif size_bytes < 1024:
         # less 1 KB → show bytes
@@ -71,13 +74,12 @@ for x in listpath:
         # 1 GB or more → show GB
         size_gb = size_bytes / (1024**3)
         size_str = (Fore.WHITE + f"{size_gb:.2f}GB" + Style.RESET_ALL)
-    
-    
-    
-    
- 
+
     time.sleep(0.1)
     print(Fore.WHITE + f"{x:90} {size_str:>15}" + Style.RESET_ALL)
+
+
+SearchFatherPath()
 
  
 

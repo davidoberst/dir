@@ -42,19 +42,18 @@ print("")
 print(Fore.YELLOW + f"{'FILE':90} {'SIZE':>15}" + Style.RESET_ALL)
 print(Fore.YELLOW + "-" * 120 + Style.RESET_ALL)
 
+
 def SearchFatherPath():
  for x in listpath: # [x] iteration on the path
     #DECLARE VARIABLES
     full_path = os.path.join(userEntry, x) #get the full path
     size_bytes = os.path.getsize(full_path) 
     isdir = os.path.isdir(x) #check if [x] is a file or a dir
-    
 
-
-
-    
     if isdir == True:
      size_str = Fore.YELLOW + "Directory" + Style.RESET_ALL
+     os.chdir(x)
+     os.listdir(x)
 
     elif size_bytes < 1024:
         # less 1 KB → show bytes
